@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Drift – Journeys worth leaving home for</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f8f7;--surface:#fff;--ink:#0d2b3a;--muted:#496573;--teal:#12767c;--sun:#f4b63d;--line:#d3e3e2;--hero1:#0d2b3a;--hero2:#12767c;--hero-ink:#fff;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1a22;--surface:#11303c;--ink:#e8f3f2;--muted:#9bb8bf;--teal:#4fc1c4;--line:#1f4755;--hero1:#06131a;--hero2:#0e5a60;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1a22;--surface:#11303c;--ink:#e8f3f2;--muted:#9bb8bf;--teal:#4fc1c4;--line:#1f4755;--hero1:#06131a;--hero2:#0e5a60;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;font-size:1.4rem;text-decoration:none;letter-spacing:-.02em}
+.logo b{color:var(--sun)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--muted)}
+nav ul a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--sun);color:#0d2b3a;font:inherit;font-weight:700;padding:12px 24px;border-radius:999px;border:0;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.07)}
+.hero{background:linear-gradient(170deg,var(--hero1),var(--hero2));color:#fff;position:relative;overflow:hidden}
+.hero .wrap{padding-top:72px;padding-bottom:150px;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,8vw,5.4rem);line-height:.98;letter-spacing:-.035em;font-weight:800;margin:0 0 20px;max-width:12ch}
+.hero p{font-size:1.15rem;max-width:46ch;margin:0 0 30px;color:#d6ecec}
+.sun{position:absolute;right:8%;top:60px;width:min(32vw,260px);aspect-ratio:1;border-radius:50%;background:var(--sun);opacity:.95}
+.waves{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:120px}
+section{padding:70px 0}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.025em;line-height:1.1;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 30px;max-width:56ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.chip{font:inherit;font-weight:600;padding:8px 18px;border-radius:999px;border:2px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.card{background:var(--surface);border-radius:20px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.card[hidden]{display:none}
+.art{height:150px;display:flex;align-items:flex-end;padding:14px;font-size:2.6rem}
+.card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{margin:0;font-size:1.25rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem;flex:1}
+.price{font-weight:800;color:var(--teal)}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.plan div{border-left:4px solid var(--sun);padding:4px 0 4px 16px}
+.plan h3{margin:0 0 4px}
+.plan p{margin:0;color:var(--muted)}
+.book{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:20px 0}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem}
+input,select{font:inherit;padding:11px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+#msg{margin:16px 0 0;font-weight:600;color:var(--teal);min-height:1.5em}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:640px){nav ul{display:none}.sun{opacity:.5}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a class="logo" href="#top">Drift<b>.</b></a>
+<ul><li><a href="#places">Destinations</a></li><li><a href="#how">How it works</a></li><li><a href="#book">Book</a></li></ul>
+<a class="btn" href="#book">Plan a trip</a>
+</nav></div></header>
+
+<main id="top">
+<div class="hero">
+<div class="sun" aria-hidden="true"></div>
+<div class="wrap">
+<h1>Go somewhere that changes you.</h1>
+<p>Hand-built trips to beaches, mountains, old cities and wild places. Pick a destination, set your dates, and we handle flights, stays and local guides.</p>
+<a class="btn" href="#places">Find your trip</a>
+</div>
+<svg class="waves" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C240 120 480 0 720 50 C960 100 1200 10 1440 60 L1440 120 L0 120Z" fill="var(--bg)"/></svg>
+</div>
+
+<section id="places"><div class="wrap">
+<h2>Where to next?</h2>
+<p class="sub">Choose the kind of trip you want and we’ll show what fits.</p>
+<div class="chips" id="chips" role="group" aria-label="Filter by trip type">
+<button class="chip" aria-pressed="true" data-f="all">All</button>
+<button class="chip" aria-pressed="false" data-f="beach">Beach</button>
+<button class="chip" aria-pressed="false" data-f="mountain">Mountains</button>
+<button class="chip" aria-pressed="false" data-f="culture">Culture</button>
+<button class="chip" aria-pressed="false" data-f="wild">Wildlife</button>
+</div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="how" style="background:var(--surface);border-block:1px solid var(--line)"><div class="wrap">
+<h2>How a trip comes together</h2>
+<p class="sub">Four steps, no hidden fees.</p>
+<div class="plan">
+<div><h3>1. Tell us your plan</h3><p>Destination, dates and budget. That’s all we need to start.</p></div>
+<div><h3>2. Get an itinerary</h3><p>A local expert sends a day-by-day plan within 24 hours.</p></div>
+<div><h3>3. Adjust it</h3><p>Swap hotels, add activities or slow the pace until it feels right.</p></div>
+<div><h3>4. Pack and go</h3><p>Tickets, transfers and a 24/7 help line are all in one place.</p></div>
+</div>
+</div></section>
+
+<section id="book"><div class="wrap">
+<div class="book">
+<h2>Plan your trip</h2>
+<p class="sub">Send your details and we’ll reply with a custom itinerary and price.</p>
+<div class="fields">
+<label>Destination<select id="dest"></select></label>
+<label>Departure date<input type="date" id="date"></label>
+<label>Travelers<input type="number" id="pax" min="1" max="20" value="2"></label>
+<label>Email<input type="email" id="email" placeholder="you@example.com"></label>
+</div>
+<button class="btn" id="send">Request itinerary</button>
+<p id="msg" role="status"></p>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Drift Travel Co.</span><span>hello@drifttravel.example</span></div></footer>
+
+<script>
+var D=[
+{n:"Goa, India",t:"beach",e:"🏖️",p:18500,d:"Quiet southern beaches, Portuguese lanes and fresh seafood.",c:"linear-gradient(135deg,#f4b63d,#e9825b)"},
+{n:"Andaman Islands",t:"beach",e:"🐢",p:32000,d:"Clear water, coral reefs and white-sand coves.",c:"linear-gradient(135deg,#12767c,#4fc1c4)"},
+{n:"Ladakh",t:"mountain",e:"🏔️",p:41000,d:"High passes, blue lakes and monasteries above the clouds.",c:"linear-gradient(135deg,#46689a,#9fb9d9)"},
+{n:"Munnar, Kerala",t:"mountain",e:"🍃",p:15500,d:"Tea hills, mist at sunrise and cool evening walks.",c:"linear-gradient(135deg,#2f7d55,#9bd18b)"},
+{n:"Jaipur, Rajasthan",t:"culture",e:"🏰",p:22000,d:"Palaces, bazaars and a food scene worth a week.",c:"linear-gradient(135deg,#c2557a,#f2a07b)"},
+{n:"Madurai & Thanjavur",t:"culture",e:"🛕",p:12500,d:"Temple towns with centuries of art, music and cooking.",c:"linear-gradient(135deg,#a8552e,#e8b06a)"},
+{n:"Ranthambore",t:"wild",e:"🐅",p:27500,d:"Early-morning safaris and a real chance to see tigers.",c:"linear-gradient(135deg,#c7771e,#f4b63d)"},
+{n:"Kabini, Karnataka",t:"wild",e:"🐘",p:24000,d:"Elephants at the water’s edge and river boat rides.",c:"linear-gradient(135deg,#355c4a,#7fb08a)"}
+];
+var grid=document.getElementById("grid"),dest=document.getElementById("dest");
+D.forEach(function(x){
+var c=document.createElement("article");c.className="card";c.dataset.t=x.t;
+c.innerHTML='<div class="art" style="background:'+x.c+'" aria-hidden="true">'+x.e+'</div><div class="body"><h3>'+x.n+'</h3><p>'+x.d+'</p><span class="price">From ₹'+x.p.toLocaleString("en-IN")+' per person</span></div>';
+grid.appendChild(c);
+var o=document.createElement("option");o.textContent=x.n;dest.appendChild(o);
+});
+document.getElementById("chips").addEventListener("click",function(e){
+var b=e.target.closest(".chip");if(!b)return;
+document.querySelectorAll(".chip").forEach(function(k){k.setAttribute("aria-pressed",k===b)});
+var f=b.dataset.f;
+document.querySelectorAll(".card").forEach(function(c){c.hidden=!(f==="all"||c.dataset.t===f)});
+});
+document.getElementById("send").addEventListener("click",function(){
+var m=document.getElementById("msg"),em=document.getElementById("email").value,dt=document.getElementById("date").value;
+if(!/^\S+@\S+\.\S+$/.test(em)){m.textContent="Enter a valid email so we can reply.";return}
+if(!dt){m.textContent="Choose a departure date.";return}
+m.textContent="Request sent. Expect your "+dest.value+" itinerary within 24 hours.";
+});
+</script>
+</body>
+</html>
